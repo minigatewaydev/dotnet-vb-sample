@@ -17,8 +17,8 @@ Module Program
         Console.WriteLine()
 
         ' TODO change according to your own data
-        ' for username & password. If you set 'gw-dlr-mask' to 1,
-        ' please specify the 'gw-dlr-url'
+        ' for username & password. If you set '.DlrMask' to 1,
+        ' please specify the '.DlrUrl'
 
         Dim request As MtRequest = New MtRequest With {
             .Username = "<YOUR-USERNAME>",
