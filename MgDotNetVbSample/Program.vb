@@ -15,24 +15,38 @@ Module Program
         Console.WriteLine("===============================")
         Console.WriteLine("To initiate, press ENTER key")
         Console.WriteLine()
+
+        ' TODO change according to your own data
+        ' for username & password. If you set 'gw-dlr-mask' to 1,
+        ' please specify the 'gw-dlr-url'
+
         Dim request As MtRequest = New MtRequest With {
-            .Username = "httpprepaid",
-            .Password = "123456",
+            .Username = "<YOUR-USERNAME>",
+            .Password = "<YOUR-PASSWORD>",
             .From = ".NET Sample",
-            .[To] = "60137033242",
-            .Text = ".NETCore (VBNET) sample using HTTP POST",
+            .[To] = "6012345678",
+            .Text = ".NETCore (VBNET) sample using HTTP POST & GET",
             .Coding = "1",
-            .DlrMask = "1",
-            .DlrUrl = "http://127.0.0.1:5002/api/dlr/save-json",
+            .DlrMask = "0",
+            .DlrUrl = "<YOUR-DLR-URL>",
             .ResponseType = "json"
         }
 
         Do
             If Console.ReadKey(True).Key = ConsoleKey.Enter Then
-                'TODO: open one method call
 
-                SendSmsUsingPostAsync(request)
-                ' SendSmsUsingGetAsync(request)
+                ' TODO: change this between 1 - 2 to switch result
+                ' 1 = Send using POST
+                ' 2 = Send using GET
+
+                Dim type = 1
+
+                Select Case type
+                    Case 1
+                        SendSmsUsingPostAsync(request)
+                    Case 2
+                        SendSmsUsingGetAsync(request)
+                End Select
             End If
         Loop While Console.ReadKey(True).Key <> ConsoleKey.Escape
 
